@@ -231,6 +231,9 @@ The reference style:
 - talks directly to a specific group
 - names real founder or business pain
 - uses a concrete failure pattern
+- can open with a sharp plain hook such as "Funny thing about conferences:" when it sounds like Akshat speaking directly
+- uses specific numbers when they are natural and believable, such as "$30K-50K on booth, flights, hotels, sponsorships"
+- shows the missed-buyer scene clearly, such as "ideal buyers walk 3 feet away from them and disappear forever"
 - uses simple visual rhythm:
   - Buy booth.
   - Print banners.
@@ -239,6 +242,7 @@ The reference style:
 - keeps sharp principle lines:
   - The event creates intent.
   - Outbound creates the meeting.
+- can use other simple principle lines, such as "Buyers respond very differently when they already recognize your name."
 - gives a simple tactical play
 - ends with a clear, natural video CTA
 
@@ -294,6 +298,7 @@ WhatsApp:
 - Avoid corporate phrases.
 - Do not use "calendar invite with invoices".
 - Do not use "lanyards"; prefer "event badges" or avoid the phrase completely.
+- For Conference Demand-style videos, prefer the shape: specific event spend, passive waiting, buyer walks nearby, missed meeting, pre-event outbound lesson, natural video CTA.
 
 Email:
 

@@ -18,6 +18,8 @@ Status: Initial rules; update after real campaign data.
 - Creating 5-10 variants when 2-3 strong messages would be better.
 - Copy that sounds like generic repurposed content instead of a personal message from Akshat.
 - Newsletter-style WhatsApp messages.
+- WhatsApp copy that explains the whole video instead of landing one concrete founder pain.
+- WhatsApp posts that skip the real scene: money spent, passive waiting, buyers nearby, missed meetings.
 - Over-polished copy that loses founder directness.
 - Cute phrases that sound clever but weak.
 - "Calendar invite with invoices."

@@ -35,6 +35,9 @@ Status: Waiting for HubSpot, SendFox, YouTube, Buffer, LinkedIn, WhatsApp, or ma
 - Create only the requested channel asset by default.
 - Before writing options, study the script, extract the strongest idea, write one flagship message, critique it internally, improve it, then create only the final 2-5 options needed for that channel.
 - WhatsApp should use Akshat's approved personal-observation style: direct group, real founder pain, concrete failure pattern, simple rhythm, sharp principle line, simple tactical play, natural video CTA.
+- Best Conference Demand WhatsApp benchmark: "Funny thing about conferences..." with a concrete $30K-50K event spend, passive pipeline mistake, ideal buyers walking 3 feet away, and the simple lesson that pre-event outbound changes recognition before the event.
+- Strong WhatsApp posts can start without "Hi [Community Name]" when the hook feels like Akshat speaking directly and the channel/group context is obvious.
+- Prefer one sharp concrete scene over many variants: event spend, passive waiting, buyers nearby, missed meeting, pre-event outbound.
 - WhatsApp default: 2-3 strong messages, not 5-10 variants.
 - LinkedIn default when requested: 3-5 options only.
 - Email default when requested: 2-3 subject options and one strong email.

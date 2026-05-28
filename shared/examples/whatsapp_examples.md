@@ -22,6 +22,35 @@ It should not sound like a newsletter blast.
 
 ## Approved Conference Demand Style
 
+Use this as the preferred benchmark for Conference Demand-style WhatsApp posts:
+
+Funny thing about conferences:
+
+A company spends $30K-50K on booth, flights, hotels, sponsorships...
+
+Then waits passively for pipeline.
+
+Meanwhile, ideal buyers walk 3 feet away from them and disappear forever.
+
+Some of those buyers probably would have taken the meeting if contacted before the event.
+
+That is why pre-event outbound matters so much.
+
+Buyers respond very differently when they already recognize your name.
+
+Made a video on this:
+https://www.youtube.com/watch?v=iQdNmHKNYlc
+
+Why this works:
+- specific spend range
+- plain founder pain
+- concrete missed-buyer visual
+- simple lesson
+- no newsletter tone
+- natural CTA
+
+## Alternate Conference Demand Style
+
 Hi [Community Name],
 
 My observation from working around B2B growth:
