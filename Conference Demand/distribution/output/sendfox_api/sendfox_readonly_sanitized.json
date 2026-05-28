@@ -1,0 +1,49 @@
+﻿{
+    "me":  {
+               "id":  5908,
+               "name":  "Akshat Kharbanda",
+               "email":  "akshat@bizamps.com"
+           },
+    "lists":  [
+                  {
+                      "id":  636389,
+                      "name":  "Ex-client list"
+                  },
+                  {
+                      "id":  631826,
+                      "name":  "BizAmps\u0027s U.S Interested leads"
+                  },
+                  {
+                      "id":  625462,
+                      "name":  "DS Test list"
+                  },
+                  {
+                      "id":  563910,
+                      "name":  "CHD_Event_Registered_Form"
+                  },
+                  {
+                      "id":  563907,
+                      "name":  "CHD_Hubspot_Contacts"
+                  },
+                  {
+                      "id":  563903,
+                      "name":  "FBKeynote - List"
+                  },
+                  {
+                      "id":  501623,
+                      "name":  "NCR Event 4th May Updated"
+                  },
+                  {
+                      "id":  501139,
+                      "name":  "NCR Event 4th May"
+                  },
+                  {
+                      "id":  499618,
+                      "name":  "CRM Leads in Sheet to Sendfox via Make 2024"
+                  },
+                  {
+                      "id":  480136,
+                      "name":  "All Biz Valid Jan 2024"
+                  }
+              ]
+}

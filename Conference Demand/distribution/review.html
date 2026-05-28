@@ -1,0 +1,441 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conference Demand Review</title>
+  <style>
+    :root { --bg:#f5f5f2; --card:#fff; --ink:#171717; --muted:#666; --line:#deded8; --soft:#fff6d6; --ok:#e7f7ec; --edit:#fff6d6; --bad:#fdeaea; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font-family:Arial, Helvetica, sans-serif; line-height:1.5; }
+    .wrap { max-width:1040px; margin:0 auto; padding:32px 18px 70px; }
+    h1 { margin:0 0 8px; font-size:34px; line-height:1.1; letter-spacing:0; }
+    h2 { margin:0 0 12px; font-size:23px; letter-spacing:0; }
+    h3 { margin:18px 0 8px; font-size:17px; letter-spacing:0; }
+    p { margin:0 0 12px; }
+    .pill { display:inline-block; padding:4px 9px; border-radius:999px; background:var(--soft); border:1px solid #eadb9d; font-size:12px; font-weight:700; text-transform:uppercase; }
+    .card { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:18px; margin:16px 0; }
+    .asset { border:1px solid var(--line); border-radius:8px; padding:16px; margin:14px 0; background:#fff; }
+    .preview { white-space:pre-wrap; background:#fafafa; border:1px solid var(--line); border-radius:8px; padding:12px; max-height:260px; overflow:auto; }
+    .controls { display:flex; flex-wrap:wrap; gap:12px; margin:12px 0; }
+    label { cursor:pointer; }
+    textarea { width:100%; min-height:88px; border:1px solid var(--line); border-radius:8px; padding:10px; font-family:Arial, Helvetica, sans-serif; font-size:14px; resize:vertical; }
+    button { border:0; background:#111; color:#fff; border-radius:6px; padding:11px 15px; font-weight:700; cursor:pointer; margin:4px 8px 4px 0; }
+    button.secondary { background:#555; }
+    button.small { padding:8px 11px; font-size:13px; }
+    .output { white-space:pre-wrap; background:#111; color:#fff; border-radius:8px; padding:14px; min-height:180px; overflow:auto; }
+    .muted { color:var(--muted); }
+    .hint { background:#fff8d8; border:1px solid #ecd889; border-radius:8px; padding:12px; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header>
+      <span class="pill">Approval + Comments</span>
+      <h1>Conference Demand Review</h1>
+      <p class="muted"><strong>Main review file is now <a href="review_dashboard.html">review_dashboard.html</a>.</strong> This older page remains as backup.</p>
+    </header>
+
+    <section class="card">
+      <h2>How This Works</h2>
+      <p>1. Prefer <a href="review_dashboard.html">review_dashboard.html</a> for the full one-file review.</p>
+      <p>Optional checks: <a href="mobile_preview.html">mobile_preview.html</a>, <a href="sendfox_final_preview.html">sendfox_final_preview.html</a>, and <a href="approval_summary.html">approval_summary.html</a>.</p>
+      <p>2. Mark each asset below as approved, needs_edit, or rejected.</p>
+      <p>3. Add comments where needed.</p>
+      <p>4. Click <strong>Generate approval.md content</strong> or <strong>Copy Codex feedback prompt</strong>.</p>
+      <p class="hint">This page cannot reliably write files from your browser. It creates clean text you can paste into Codex, and Codex will update `approval.md` and content files.</p>
+    </section>
+
+    <section class="card">
+      <h2>A. Content Approval</h2>
+      <p>These approvals only mean the content is acceptable. They do not approve SendFox, Buffer, API calls, drafts, scheduling, or publishing.</p>
+    </section>
+
+    <form id="reviewForm">
+      <section class="asset" data-id="sendfox_email" data-label="SendFox email preview">
+        <h2>SendFox Email Preview</h2>
+        <div class="preview">Subject: 🎟️ Your booth is not enough
+
+Opening:
+Most companies treat conferences like expensive networking trips.
+
+Buy booth.
+Print banners.
+Fly the team out.
+Hope pipeline appears.
+
+That is not a strategy.
+
+The real move is pre-event outbound.
+
+CTA: Watch the full video.</div>
+        <div class="controls">
+          <label><input type="radio" name="sendfox_email" value="approved"> approved</label>
+          <label><input type="radio" name="sendfox_email" value="needs_edit" checked> needs_edit</label>
+          <label><input type="radio" name="sendfox_email" value="rejected"> rejected</label>
+        </div>
+        <textarea name="sendfox_email_comment" placeholder="Comments for SendFox email"></textarea>
+      </section>
+
+      <section class="asset" data-id="hubspot_email" data-label="HubSpot email preview">
+        <h2>HubSpot Email Preview</h2>
+        <div class="preview">HubSpot-styled version of the improved email.
+
+Uses the same conference-specific opening, thumbnail, CTA, key takeaway, and best parts.
+
+No HubSpot API draft will be created in this test.</div>
+        <div class="controls">
+          <label><input type="radio" name="hubspot_email" value="approved"> approved</label>
+          <label><input type="radio" name="hubspot_email" value="needs_edit" checked> needs_edit</label>
+          <label><input type="radio" name="hubspot_email" value="rejected"> rejected</label>
+        </div>
+        <textarea name="hubspot_email_comment" placeholder="Comments for HubSpot email"></textarea>
+      </section>
+
+      <section class="asset" data-id="linkedin_post" data-label="LinkedIn personal profile post">
+        <h2>LinkedIn Personal Profile Post</h2>
+        <h3>Full Founder-Essay Version</h3>
+        <div class="preview">Most B2B products do not have inherent demand.
+
+Normal people translation:
+
+Nobody cares yet.
+
+Cold outbound is not the standalone engine.
+
+It is the multiplier.</div>
+        <h3>Short Version Under 900 Characters</h3>
+        <div class="preview">Most B2B products do not have inherent demand.
+
+Normal people translation:
+
+Nobody cares yet.
+
+That is why cold outbound alone is so hard.
+
+But conferences change the context.
+
+For 2 days, your buyers are in one building: over-caffeinated, slightly underfed, and weirdly open to being pitched.
+
+Most companies waste this by buying a booth and hoping pipeline appears.
+
+The better move: reach out before the event, book meetings before the event, and give buyers a reason to notice you.
+
+Outbound is not always the engine. It is the multiplier.
+
+Watch the full video:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div>
+        <div class="controls">
+          <label><input type="radio" name="linkedin_post" value="approved"> approved</label>
+          <label><input type="radio" name="linkedin_post" value="needs_edit" checked> needs_edit</label>
+          <label><input type="radio" name="linkedin_post" value="rejected"> rejected</label>
+        </div>
+        <textarea name="linkedin_post_comment" placeholder="Comments for LinkedIn post"></textarea>
+      </section>
+
+      <section class="asset" data-id="whatsapp_posts" data-label="5 WhatsApp posts">
+        <h2>5 WhatsApp Posts</h2>
+        <button type="button" class="small secondary" onclick="copyAllWhatsApp()">Copy all WhatsApp posts</button>
+        <h3>Problem-led</h3>
+        <button type="button" class="small" onclick="copyById('review-wa-problem')">Copy this post</button>
+        <div id="review-wa-problem" class="preview">Your product can be useful.
+Your buyer can need it.
+And still...
+
+Nobody cares yet.
+
+That is why cold outbound feels so hard for most B2B teams.
+
+Watch the full video:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div>
+        <h3>Punchy/Funny</h3>
+        <button type="button" class="small" onclick="copyById('review-wa-punchy')">Copy this post</button>
+        <div id="review-wa-punchy" class="preview">Most companies do conferences like this:
+
+Buy booth.
+Stand awkwardly.
+Collect tote bags.
+Have 4 decent conversations.
+Call it "brand building."
+
+Meanwhile, ideal buyers walk past them and disappear forever.
+
+Watch the full video:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div>
+        <h3>Tactical</h3>
+        <button type="button" class="small" onclick="copyById('review-wa-tactical')">Copy this post</button>
+        <div id="review-wa-tactical" class="preview">Before a conference, do 3 things:
+
+1. Reach out to target buyers.
+2. Book meetings before the event.
+3. Give them a reason to notice you there.
+
+Then the event becomes a discovery sequence.
+
+Watch the full video:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div>
+        <h3>Contrarian</h3>
+        <button type="button" class="small" onclick="copyById('review-wa-contrarian')">Copy this post</button>
+        <div id="review-wa-contrarian" class="preview">Cold outbound is not always the engine.
+
+Often, it is the multiplier.
+
+It works better when attached to something buyers already care about:
+
+- conferences
+- partnerships
+- useful reports
+
+Watch the full video:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div>
+        <h3>Founder Lesson</h3>
+        <button type="button" class="small" onclick="copyById('review-wa-founder')">Copy this post</button>
+        <div id="review-wa-founder" class="preview">Most B2B companies do not fail because the product is terrible.
+
+They fail because the market never paid enough attention.
+
+Not more emails.
+
+More trust signals.
+More repeated exposure.
+More reasons for buyers to care.
+
+Watch the full video:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div>
+        <div class="controls">
+          <label><input type="radio" name="whatsapp_posts" value="approved"> approved</label>
+          <label><input type="radio" name="whatsapp_posts" value="needs_edit" checked> needs_edit</label>
+          <label><input type="radio" name="whatsapp_posts" value="rejected"> rejected</label>
+        </div>
+        <textarea name="whatsapp_posts_comment" placeholder="Comments for WhatsApp posts"></textarea>
+      </section>
+
+      <section class="asset" data-id="x_facebook_copy" data-label="X/Facebook copy">
+        <h2>X/Facebook Copy</h2>
+        <div class="preview">Copy only. No publishing.
+
+Includes short X post, X thread, and Facebook copy.</div>
+        <div class="controls">
+          <label><input type="radio" name="x_facebook_copy" value="approved"> approved</label>
+          <label><input type="radio" name="x_facebook_copy" value="needs_edit" checked> needs_edit</label>
+          <label><input type="radio" name="x_facebook_copy" value="rejected"> rejected</label>
+        </div>
+        <textarea name="x_facebook_copy_comment" placeholder="Comments for X/Facebook copy"></textarea>
+      </section>
+
+      <section class="asset" data-id="posting_plan" data-label="Posting plan">
+        <h2>Posting Plan</h2>
+        <div class="preview">LinkedIn first, SendFox 18-24 hours later, WhatsApp after email.
+
+Timing is a hypothesis.</div>
+        <div class="controls">
+          <label><input type="radio" name="posting_plan" value="approved"> approved</label>
+          <label><input type="radio" name="posting_plan" value="needs_edit" checked> needs_edit</label>
+          <label><input type="radio" name="posting_plan" value="rejected"> rejected</label>
+        </div>
+        <textarea name="posting_plan_comment" placeholder="Comments for posting plan"></textarea>
+      </section>
+
+      <section class="asset" data-id="missed_channels" data-label="Missed-channel checklist">
+        <h2>Missed-Channel Checklist</h2>
+        <div class="preview">These are reminders for later. Checking them here does not approve creation or publishing.</div>
+        <div class="controls">
+          <label><input type="checkbox" name="medium_article"> Medium article</label>
+          <label><input type="checkbox" name="website_blog"> Website blog</label>
+          <label><input type="checkbox" name="youtube_community"> YouTube Community post</label>
+          <label><input type="checkbox" name="linkedin_carousel"> LinkedIn carousel</label>
+          <label><input type="checkbox" name="shorts_test"> Shorts test</label>
+          <label><input type="checkbox" name="hubspot_email_later"> HubSpot email later</label>
+          <label><input type="checkbox" name="octolens_search"> Octolens conversation search</label>
+          <label><input type="checkbox" name="newsletter_swap"> Newsletter swap angle</label>
+        </div>
+        <textarea name="missed_channels_comment" placeholder="Notes on missed channels or future repurposing"></textarea>
+      </section>
+
+      <section class="card">
+        <h2>B. External Action Approval</h2>
+        <p>These approvals are separate from content approval. Only approve these when you are ready for Codex to use the relevant API safely.</p>
+      </section>
+
+      <section class="asset" data-id="sendfox_me" data-label="SendFox read-only test: GET /me">
+        <h2>SendFox Read-Only Test: GET /me</h2>
+        <div class="preview">Read-only account check. No campaign creation.</div>
+        <div class="controls">
+          <label><input type="radio" name="sendfox_me" value="approved"> approved</label>
+          <label><input type="radio" name="sendfox_me" value="needs_edit" checked> needs_edit</label>
+          <label><input type="radio" name="sendfox_me" value="rejected"> rejected</label>
+        </div>
+        <textarea name="sendfox_me_comment" placeholder="Comments for SendFox /me test"></textarea>
+      </section>
+
+      <section class="asset" data-id="sendfox_lists" data-label="SendFox read-only test: GET /lists">
+        <h2>SendFox Read-Only Test: GET /lists</h2>
+        <div class="preview">Read-only list check. No campaign creation. Codex should ask you to choose the target list after this.</div>
+        <div class="controls">
+          <label><input type="radio" name="sendfox_lists" value="approved"> approved</label>
+          <label><input type="radio" name="sendfox_lists" value="needs_edit" checked> needs_edit</label>
+          <label><input type="radio" name="sendfox_lists" value="rejected"> rejected</label>
+        </div>
+        <textarea name="sendfox_lists_comment" placeholder="Comments for SendFox /lists test"></textarea>
+      </section>
+
+      <section class="asset" data-id="sendfox_campaign_draft" data-label="SendFox campaign draft creation">
+        <h2>SendFox Campaign Draft Creation</h2>
+        <div class="preview">Creates draft only after list confirmation. Send endpoint is forbidden. scheduled_at must be omitted.</div>
+        <div class="controls">
+          <label><input type="radio" name="sendfox_campaign_draft" value="approved"> approved</label>
+          <label><input type="radio" name="sendfox_campaign_draft" value="needs_edit" checked> needs_edit</label>
+          <label><input type="radio" name="sendfox_campaign_draft" value="rejected"> rejected</label>
+        </div>
+        <textarea name="sendfox_campaign_draft_comment" placeholder="Comments for SendFox draft creation"></textarea>
+      </section>
+
+      <section class="asset" data-id="buffer_channel_test" data-label="Buffer read-only channel test">
+        <h2>Buffer Read-Only Channel Test</h2>
+        <div class="preview">Read-only Buffer profile/channel check. Confirm LinkedIn profile before any draft/queued post.</div>
+        <div class="controls">
+          <label><input type="radio" name="buffer_channel_test" value="approved"> approved</label>
+          <label><input type="radio" name="buffer_channel_test" value="needs_edit" checked> needs_edit</label>
+          <label><input type="radio" name="buffer_channel_test" value="rejected"> rejected</label>
+        </div>
+        <textarea name="buffer_channel_test_comment" placeholder="Comments for Buffer channel test"></textarea>
+      </section>
+
+      <section class="asset" data-id="buffer_linkedin_draft" data-label="Buffer LinkedIn draft/queued post">
+        <h2>Buffer LinkedIn Draft/Queued Post</h2>
+        <div class="preview">Only if Buffer supports a safe non-immediate state. Do not publish immediately. If unclear, create a local fallback and stop.</div>
+        <div class="controls">
+          <label><input type="radio" name="buffer_linkedin_draft" value="approved"> approved</label>
+          <label><input type="radio" name="buffer_linkedin_draft" value="needs_edit" checked> needs_edit</label>
+          <label><input type="radio" name="buffer_linkedin_draft" value="rejected"> rejected</label>
+        </div>
+        <textarea name="buffer_linkedin_draft_comment" placeholder="Comments for Buffer LinkedIn draft/queue"></textarea>
+      </section>
+    </form>
+
+    <section class="card">
+      <h2>Generate Review Output</h2>
+      <button type="button" onclick="generateApproval()">Generate approval.md content</button>
+      <button type="button" onclick="generateSummary()">Generate approval summary</button>
+      <button type="button" class="secondary" onclick="copyApproval()">Copy approval.md content</button>
+      <button type="button" onclick="generatePrompt()">Copy Codex feedback prompt</button>
+      <p class="muted">If copy does not work, select the text below and copy manually.</p>
+      <div id="output" class="output">Generated review output will appear here.</div>
+    </section>
+  </main>
+
+  <script>
+    const assets = [
+      ['sendfox_email', 'SendFox email preview'],
+      ['hubspot_email', 'HubSpot email preview'],
+      ['linkedin_post', 'LinkedIn personal profile post'],
+      ['whatsapp_posts', '5 WhatsApp posts'],
+      ['x_facebook_copy', 'X/Facebook copy'],
+      ['posting_plan', 'Posting plan'],
+      ['missed_channels', 'Missed-channel checklist'],
+      ['sendfox_me', 'SendFox read-only test: GET /me'],
+      ['sendfox_lists', 'SendFox read-only test: GET /lists'],
+      ['sendfox_campaign_draft', 'SendFox campaign draft creation'],
+      ['buffer_channel_test', 'Buffer read-only channel test'],
+      ['buffer_linkedin_draft', 'Buffer LinkedIn draft/queued post']
+    ];
+    const contentAssetIds = ['sendfox_email', 'hubspot_email', 'linkedin_post', 'whatsapp_posts', 'x_facebook_copy', 'posting_plan'];
+    const externalActionIds = ['sendfox_me', 'sendfox_lists', 'sendfox_campaign_draft', 'buffer_channel_test', 'buffer_linkedin_draft'];
+
+    function getReviewText() {
+      const now = new Date().toISOString();
+      let text = `# Approval\n\nStatus: reviewed_in_html\n\nGenerated from: review.html\nGenerated at: ${now}\n\n`;
+      text += `## Content And External Action Review\n\n| Asset/Action | Status | Comment |\n|---|---|---|\n`;
+      for (const [id, label] of assets) {
+        const checked = document.querySelector(`input[name="${id}"]:checked`);
+        let status = checked ? checked.value : 'pending';
+        if (id === 'missed_channels') {
+          const checkedBoxes = Array.from(document.querySelectorAll('input[type="checkbox"]:checked')).map(x => x.parentElement.innerText.trim());
+          status = checkedBoxes.length ? `noted: ${checkedBoxes.join(', ')}` : 'noted_none';
+        }
+        const comment = (document.querySelector(`textarea[name="${id}_comment"]`)?.value || '').replace(/\n/g, ' ').trim();
+        text += `| ${label} | ${status} | ${comment || ''} |\n`;
+      }
+      text += `\n## Safety Rules\n\n`;
+      text += `- Do not send SendFox campaign.\n`;
+      text += `- Do not publish LinkedIn immediately.\n`;
+      text += `- Do not publish X/Facebook.\n`;
+      text += `- Do not publish Medium.\n`;
+      text += `- Do not create HubSpot email via API yet.\n`;
+      text += `- Do not auto-post WhatsApp.\n`;
+      text += `- Do not auto-post YouTube Community.\n`;
+      text += `- Do not print or log secrets from keys.env.\n`;
+      return text;
+    }
+
+    function getStatus(id) {
+      const checked = document.querySelector(`input[name="${id}"]:checked`);
+      return checked ? checked.value : 'pending';
+    }
+
+    function getLabel(id) {
+      const row = assets.find(x => x[0] === id);
+      return row ? row[1] : id;
+    }
+
+    function summarizeByStatus(ids, status) {
+      const rows = ids.filter(id => getStatus(id) === status).map(id => `- ${getLabel(id)}`);
+      return rows.length ? rows.join('\n') : '- None';
+    }
+
+    function getSummaryText() {
+      const approvedExternal = externalActionIds.filter(id => getStatus(id) === 'approved');
+      const blockedExternal = externalActionIds.filter(id => getStatus(id) !== 'approved');
+      let nextSafe = 'No API action. Content/external action approval is still incomplete.';
+      if (getStatus('sendfox_me') === 'approved') nextSafe = 'SendFox read-only test: GET /me.';
+      if (getStatus('sendfox_me') === 'approved' && getStatus('sendfox_lists') === 'approved') nextSafe = 'SendFox read-only tests: GET /me, then GET /lists.';
+      if (getStatus('sendfox_me') === 'approved' && getStatus('sendfox_lists') === 'approved' && getStatus('sendfox_campaign_draft') === 'approved') nextSafe = 'Ask Akshat to confirm the target SendFox list, then create SendFox campaign draft only.';
+      if (getStatus('buffer_channel_test') === 'approved' && getStatus('buffer_linkedin_draft') === 'approved') nextSafe += ' After SendFox works, test Buffer channel before any LinkedIn draft/queue.';
+
+      return `# Approval Summary\n\n## Approved Content Assets\n${summarizeByStatus(contentAssetIds, 'approved')}\n\n## Assets Needing Edits\n${summarizeByStatus(contentAssetIds, 'needs_edit')}\n\n## Rejected Assets\n${summarizeByStatus(contentAssetIds, 'rejected')}\n\n## Approved External Actions\n${approvedExternal.length ? approvedExternal.map(id => `- ${getLabel(id)}`).join('\n') : '- None'}\n\n## Blocked External Actions\n${blockedExternal.length ? blockedExternal.map(id => `- ${getLabel(id)} (${getStatus(id)})`).join('\n') : '- None'}\n\n## Next Safe API Action\n${nextSafe}\n\n## Reminder\nContent approval does not automatically approve external drafts, sending, publishing, or scheduling.`;
+    }
+
+    function generateApproval() {
+      document.getElementById('output').textContent = getReviewText();
+    }
+
+    function generateSummary() {
+      document.getElementById('output').textContent = getSummaryText();
+    }
+
+    async function copyApproval() {
+      const text = getReviewText();
+      document.getElementById('output').textContent = text;
+      await copyText(text);
+    }
+
+    async function generatePrompt() {
+      const review = getReviewText();
+      const prompt = `Please update the Conference Demand distribution files based on this HTML review output. Update approval.md and revise content files where comments request edits. Content approval is separate from external action approval. Do not create external drafts unless the specific external action is approved. Do not send, publish, schedule, or call APIs unless explicitly approved.\n\n${review}`;
+      document.getElementById('output').textContent = prompt;
+      await copyText(prompt);
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+      } catch (err) {
+        window.prompt('Copy this text:', text);
+      }
+    }
+    function copyById(id) {
+      const node = document.getElementById(id);
+      if (node) copyText(node.innerText.trim());
+    }
+    function copyAllWhatsApp() {
+      const ids = ['review-wa-problem', 'review-wa-punchy', 'review-wa-tactical', 'review-wa-contrarian', 'review-wa-founder'];
+      const labels = ['Problem-led', 'Punchy/Funny', 'Tactical', 'Contrarian', 'Founder Lesson'];
+      const text = ids.map((id, index) => {
+        const node = document.getElementById(id);
+        return `${index + 1}. ${labels[index]}\n\n${node ? node.innerText.trim() : ''}`;
+      }).join('\n\n---\n\n');
+      copyText(text);
+    }
+  </script>
+</body>
+</html>

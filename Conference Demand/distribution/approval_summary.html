@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Approval Summary Builder</title>
+  <style>
+    body { margin:0; background:#f5f5f2; color:#171717; font-family:Arial, Helvetica, sans-serif; line-height:1.5; }
+    .wrap { max-width:980px; margin:0 auto; padding:32px 18px 70px; }
+    h1 { margin:0 0 8px; font-size:34px; line-height:1.1; letter-spacing:0; }
+    h2 { margin:0 0 12px; font-size:22px; letter-spacing:0; }
+    .card { background:#fff; border:1px solid #deded8; border-radius:8px; padding:18px; margin:16px 0; }
+    textarea { width:100%; min-height:170px; border:1px solid #deded8; border-radius:8px; padding:12px; font-family:Arial, Helvetica, sans-serif; font-size:14px; }
+    button { border:0; background:#111; color:#fff; border-radius:6px; padding:11px 15px; font-weight:700; cursor:pointer; margin:8px 8px 8px 0; }
+    .output { white-space:pre-wrap; background:#111; color:#fff; border-radius:8px; padding:14px; min-height:220px; overflow:auto; }
+    .muted { color:#666; }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <h1>Approval Summary Builder</h1>
+    <p class="muted">Paste the generated output from review_dashboard.html here, then build a readable summary. This page is local-only and does not call any APIs.</p>
+
+    <section class="card">
+      <h2>Paste Review Output</h2>
+      <textarea id="reviewText" placeholder="Paste approval.md content generated from review_dashboard.html"></textarea>
+      <button type="button" onclick="buildSummary()">Build approval summary</button>
+      <button type="button" onclick="copySummary()">Copy summary</button>
+    </section>
+
+    <section class="card">
+      <h2>Readable Summary</h2>
+      <div id="summary" class="output">Summary will appear here.</div>
+    </section>
+  </main>
+
+  <script>
+    const contentLabels = ['SendFox email', 'HubSpot email', 'LinkedIn angles', 'WhatsApp variants', 'Angle matrix', 'Posting plan and X/Facebook copy'];
+    const externalLabels = ['External action: SendFox GET /me', 'External action: SendFox GET /lists', 'External action: SendFox campaign draft', 'External action: Buffer channel test', 'External action: Buffer LinkedIn draft/queue'];
+
+    function parseRows(text) {
+      return text.split('\n')
+        .filter(line => line.startsWith('|') && !line.includes('---'))
+        .map(line => line.split('|').map(cell => cell.trim()).filter(Boolean))
+        .filter(cells => cells.length >= 3 && cells[0] !== 'Asset/Action' && cells[0] !== 'Asset' && cells[0] !== 'External Action')
+        .map(cells => ({ label: cells[0], status: cells[1], comment: cells[2] || '' }));
+    }
+
+    function list(rows, labels, predicate) {
+      const items = rows.filter(row => labels.includes(row.label) && predicate(row)).map(row => `- ${row.label}${row.comment ? `: ${row.comment}` : ''}`);
+      return items.length ? items.join('\n') : '- None';
+    }
+
+    function buildSummary() {
+      const rows = parseRows(document.getElementById('reviewText').value);
+      const approvedExternal = rows.filter(row => externalLabels.includes(row.label) && row.status === 'approved');
+      let nextSafe = 'No API action. Keep this as local review only.';
+      const status = Object.fromEntries(rows.map(row => [row.label, row.status]));
+      if (status['External action: SendFox GET /me'] === 'approved') nextSafe = 'Run SendFox read-only GET /me only.';
+      if (status['External action: SendFox GET /me'] === 'approved' && status['External action: SendFox GET /lists'] === 'approved') nextSafe = 'Run SendFox read-only GET /me and GET /lists, then ask Akshat to confirm target list.';
+      if (status['External action: SendFox campaign draft'] === 'approved') nextSafe = 'Before draft creation, confirm the target SendFox list with Akshat. Never send or schedule.';
+
+      const summary = `# Approval Summary\n\n## Approved Content Assets\n${list(rows, contentLabels, row => row.status === 'approved')}\n\n## Assets Needing Edits\n${list(rows, contentLabels, row => row.status === 'needs_edit')}\n\n## Rejected Assets\n${list(rows, contentLabels, row => row.status === 'rejected')}\n\n## Approved External Actions\n${approvedExternal.length ? approvedExternal.map(row => `- ${row.label}`).join('\n') : '- None'}\n\n## Blocked External Actions\n${list(rows, externalLabels, row => row.status !== 'approved')}\n\n## Next Safe API Action\n${nextSafe}`;
+      document.getElementById('summary').textContent = summary;
+      return summary;
+    }
+
+    async function copySummary() {
+      const summary = buildSummary();
+      try {
+        await navigator.clipboard.writeText(summary);
+      } catch (err) {
+        window.prompt('Copy this summary:', summary);
+      }
+    }
+  </script>
+</body>
+</html>

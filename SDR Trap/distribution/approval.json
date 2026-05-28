@@ -1,0 +1,55 @@
+{
+  "workflow": "youtube-distribution-draft-system",
+  "version": "v1-local-review-brand-repair-v3",
+  "video_folder": "C:\\Codex Projects\\YT\\SDR Trap",
+  "created_at": "2026-05-25T22:28:47+05:30",
+  "external_draft_creation_enabled": false,
+  "allowed_statuses": ["pending", "approved", "needs_edit", "rejected"],
+  "items": [
+    {
+      "id": "whatsapp_posts_v1",
+      "channel": "whatsapp",
+      "asset_type": "group_posts",
+      "status": "pending",
+      "source_file": "distribution_package.md",
+      "notes": ""
+    },
+    {
+      "id": "sendfox_email_v1",
+      "channel": "sendfox",
+      "asset_type": "email_preview",
+      "status": "pending",
+      "source_file": "distribution_package.md",
+      "notes": ""
+    },
+    {
+      "id": "linkedin_post_v1",
+      "channel": "linkedin",
+      "asset_type": "personal_profile_post",
+      "status": "pending",
+      "source_file": "distribution_package.md",
+      "notes": ""
+    },
+    {
+      "id": "linkedin_carousel_outline_v1",
+      "channel": "linkedin",
+      "asset_type": "carousel_outline",
+      "status": "pending",
+      "source_file": "distribution_package.md",
+      "notes": ""
+    },
+    {
+      "id": "posting_plan_v1",
+      "channel": "distribution",
+      "asset_type": "posting_plan",
+      "status": "pending",
+      "source_file": "distribution_package.md",
+      "notes": ""
+    }
+  ],
+  "draft_results": {
+    "external_drafts_created": false,
+    "results_file": "draft_results.json",
+    "notes": "V1 local review only. Do not create external drafts."
+  }
+}

@@ -1,0 +1,43 @@
+# Secrets
+.env
+.env.*
+!.env.example
+keys.env
+*.env
+*.token
+*.credentials
+*credentials*
+*.key
+*.pem
+*secret*
+*token*
+client_secret*.json
+oauth*.json
+credentials*.json
+token*.json
+
+# Local machine noise
+Thumbs.db
+Desktop.ini
+
+# Temporary files
+*.tmp
+*.bak
+~$*
+**/qa_screenshots/
+**/temp/
+**/temp_*/
+**/__pycache__/
+**/exports/
+**/contact_frames/
+**/plus1_frames/
+
+# Python/cache if helper scripts are added later
+__pycache__/
+.pytest_cache/
+.mypy_cache/
+
+# Large raw exports can be backed up intentionally later if needed
+*.mp4
+*.mov
+*.avi

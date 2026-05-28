@@ -1,0 +1,81 @@
+# Run Log - video_assembly_v1
+
+## 2026-05-16
+
+- Created phase folder: `video_assembly_v1`.
+- Created subfolders: `exports`, `contact_sheets`, `temp`.
+- Confirmed source video exists: `YT_ SDR Trap.mp4`.
+- Confirmed source deck artifacts exist under `outputs\stop_scaling_chaos_full_deck`.
+- Checked normal PATH for `ffmpeg` / `ffprobe`: not available.
+- Installed Python video tooling with:
+  - `python -m pip install --user imageio-ffmpeg moviepy`
+- Located ffmpeg binary through `imageio-ffmpeg`.
+- Inspected talking-head video using ffmpeg:
+  - duration: `00:05:45.72`
+  - resolution: `1920x1080`
+  - frame rate: `30 fps`
+  - video codec: `h264`
+  - audio: `aac`, `44100 Hz`, stereo
+  - subtitle stream exists
+- Inspected local full deck package:
+  - slide count: `24`
+  - notes count: `24`
+  - animation markers found: `356`
+- Decision: use recreated animation method for v1 because direct Google Slides animated export is not available through the connected tool, and automated PowerPoint/Google animation export is not dependable for voice-synced timing.
+- Created `render_recreated_animation.py`.
+- First render attempt created output files, but contact-sheet review showed major slide timing drift: exact planned timestamps were showing the wrong slides.
+- Root cause: the first still-image concat method did not honor intended image durations consistently.
+- Fixed renderer to create properly timed reveal segments with FFmpeg looped image inputs and concat filters.
+- Second render attempt using one mini-video per reveal state was too slow and hit the execution timeout.
+- Final renderer approach: one FFmpeg command per slide with timed still inputs, then concat slide videos.
+- Created final draft:
+  - `video_assembly_v1\exports\stop_scaling_chaos_recreated_animation_pip_v1.mp4`
+- Created preview:
+  - `video_assembly_v1\exports\preview_first_60s_v1.mp4`
+- Created contact sheets:
+  - `video_assembly_v1\contact_sheets\contact_sheet_v1.jpg`
+  - `video_assembly_v1\contact_sheets\contact_sheet_plus1_v1.jpg`
+- Verification:
+  - source duration: `00:05:45.72`
+  - final duration: `00:05:45.72`
+  - preview duration: about `00:01:00`
+  - final resolution: `1920x1080`
+  - final fps: `30`
+  - audio present: yes, mapped from original source video
+- Visual QA:
+  - face box uses bottom-right placement for all slides
+  - face box does not cover captions because captions are centered above the bottom band
+  - exact-cut contact sheet frames can show the previous slide at some boundaries; the `+1s` contact sheet is the clearer sync check.
+
+
+## 2026-05-17 Compatibility Re-export
+
+- User reported the v1 MP4 did not open properly in common players/previews.
+- Diagnosis from user: initial export used `H.264 High 4:4:4 Predictive` and `pix_fmt yuv444p`, which is valid but not widely compatible.
+- Re-exported final MP4 with compatibility flags:
+  - `-c:v libx264`
+  - `-pix_fmt yuv420p`
+  - `-profile:v high`
+  - `-level 4.0`
+  - `-preset veryfast`
+  - `-crf 20`
+  - `-c:a aac`
+  - `-b:a 192k`
+  - `-movflags +faststart`
+- Created:
+  - `exports\stop_scaling_chaos_recreated_animation_pip_v1_COMPATIBLE.mp4`
+  - `exports\preview_first_60s_v1_COMPATIBLE.mp4`
+- `ffprobe.exe` was not available in the installed `imageio-ffmpeg` package, so verification used `ffmpeg -i` stream inspection instead.
+- Verified final compatible MP4:
+  - duration: `00:05:45.72`
+  - video: `h264 (High)`, `yuv420p(progressive)`, `1920x1080`, `30 fps`
+  - audio: `aac (LC)`, `44100 Hz`, stereo
+- Verified compatible preview MP4:
+  - duration: `00:01:00.07`
+  - video: `h264 (High)`, `yuv420p(progressive)`, `1920x1080`, `30 fps`
+  - audio: `aac (LC)`, `44100 Hz`, stereo
+- Local open smoke test:
+  - default Windows MP4 player launched for the compatible preview file
+  - VLC not found on PATH
+  - Chrome not found on PATH
+  - Google Drive preview not tested in this pass because file was not uploaded

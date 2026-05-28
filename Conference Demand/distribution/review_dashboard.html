@@ -1,0 +1,707 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Conference Demand Review Dashboard</title>
+  <style>
+    :root { --bg:#f5f5f2; --card:#fff; --ink:#171717; --muted:#666; --line:#deded8; --soft:#fff6d6; --dark:#111; --blue:#102a43; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--ink); font-family:Arial, Helvetica, sans-serif; line-height:1.5; }
+    .wrap { max-width:1080px; margin:0 auto; padding:30px 18px 70px; }
+    h1 { margin:0 0 8px; font-size:36px; line-height:1.08; letter-spacing:0; }
+    h2 { margin:0 0 12px; font-size:24px; letter-spacing:0; }
+    h3 { margin:18px 0 8px; font-size:17px; letter-spacing:0; }
+    h4 { margin:16px 0 8px; font-size:15px; letter-spacing:0; }
+    p { margin:0 0 12px; }
+    a { color:#111; }
+    .muted { color:var(--muted); }
+    .pill { display:inline-block; padding:4px 9px; border-radius:999px; background:var(--soft); border:1px solid #eadb9d; font-size:12px; font-weight:700; text-transform:uppercase; }
+    .card, details { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:18px; margin:14px 0; }
+    summary { cursor:pointer; font-size:22px; font-weight:800; }
+    summary span { font-size:12px; vertical-align:middle; margin-left:8px; }
+    .hero { width:100%; border-radius:8px; border:1px solid var(--line); margin:12px 0; background:#eee; }
+    .grid { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:16px; align-items:start; }
+    .three { display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:14px; align-items:start; }
+    .copy { white-space:pre-wrap; background:#fafafa; border:1px solid var(--line); border-radius:8px; padding:14px; overflow-wrap:anywhere; }
+    .copybar { display:flex; flex-wrap:wrap; gap:8px; margin:8px 0; }
+    button { border:0; background:#111; color:#fff; border-radius:6px; padding:8px 11px; font-weight:700; cursor:pointer; font-size:13px; }
+    .copy-status { position:fixed; left:18px; bottom:18px; max-width:360px; background:#111; color:#fff; padding:10px 12px; border-radius:6px; font-size:14px; box-shadow:0 8px 22px rgba(0,0,0,.18); opacity:0; pointer-events:none; transition:opacity .18s ease; z-index:20; }
+    .copy-status.show { opacity:1; }
+    .copy-helper { position:fixed; left:-9999px; top:0; width:1px; height:1px; opacity:0; }
+    .email { background:#fff; border:1px solid #d6d6d0; border-radius:8px; overflow:hidden; }
+    .email-head { background:#111; color:#fff; padding:14px 18px; font-size:14px; }
+    .email-body { padding:20px; }
+    .email-title { font-size:27px; line-height:1.12; margin:0 0 14px; }
+    .thumb { display:block; text-align:center; text-decoration:none; margin:18px 0; border-radius:8px; overflow:hidden; color:#fff; background:#111; }
+    .thumb img { display:block; width:100%; height:auto; }
+    .btn { display:inline-block; background:#111111; color:#ffffff; padding:10px 16px; border-radius:6px; font-weight:bold; text-decoration:none; font-size:14px; line-height:1.2; }
+    .takeaway { background:#fff8d8; border:1px solid #ecd889; border-radius:8px; padding:14px; margin:18px 0; }
+    .hubspot .email-head { background:var(--blue); }
+    table { width:100%; border-collapse:collapse; font-size:14px; }
+    th, td { border-bottom:1px solid var(--line); padding:10px 8px; text-align:left; vertical-align:top; }
+    th { background:#fafafa; }
+    @media (max-width:900px){ .grid, .three { grid-template-columns:1fr; } h1 { font-size:30px; } summary { font-size:20px; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="card">
+      <span class="pill">Main Review File</span>
+      <h1>Conference Demand Review Dashboard</h1>
+      <p class="muted">A clean content dashboard for the Conference Demand distribution package.</p>
+      <p><strong>Video:</strong> <a href="https://www.youtube.com/watch?v=iQdNmHKNYlc">The Biggest B2B Growth Hack Nobody Talks About On LinkedIn</a></p>
+      <img class="hero" src="https://img.youtube.com/vi/iQdNmHKNYlc/maxresdefault.jpg" alt="Conference Demand thumbnail">
+    </header>
+
+    <section class="card">
+      <h2>Sections</h2>
+      <p><a href="#sendfox">SendFox email</a> | <a href="#linkedin">LinkedIn angles</a> | <a href="#whatsapp">WhatsApp variants</a> | <a href="#xfb">X/Facebook</a> | <a href="#posting">Posting plan</a> | <a href="#coverage">Coverage check</a></p>
+    </section>
+
+    <details id="sendfox" open>
+      <summary>1. SendFox Email <span class="pill">draft created</span></summary>
+      <div class="grid">
+        <article class="email">
+          <div class="email-head"><strong>Subject:</strong> 🎟️ Your booth is not enough<br><strong>Preview:</strong> Most companies treat conferences like expensive networking trips. The real move starts before the event.</div>
+          <div class="email-body">
+            <h3 class="email-title">Your booth is not enough.</h3>
+            <p>Hi {{contact.first_name}},</p>
+            <p>Most companies treat conferences like expensive networking trips.</p>
+            <p><strong>Buy booth.<br>Print banners.<br>Fly the team out.<br>Hope pipeline appears.</strong></p>
+            <p>That is not a strategy.</p>
+            <p>Meanwhile, ideal buyers walk a few feet away from them and disappear forever.</p>
+            <a class="thumb" href="https://www.youtube.com/watch?v=iQdNmHKNYlc"><img src="https://img.youtube.com/vi/iQdNmHKNYlc/maxresdefault.jpg" alt="Watch the full video"></a>
+            <p><a class="btn" href="https://www.youtube.com/watch?v=iQdNmHKNYlc">Watch the full video</a></p>
+            <div class="takeaway"><strong>Core lesson:</strong> Reach out before the conference. Book meetings before the conference. Give buyers a reason to notice you before they walk past your booth.</div>
+            <p>Cold outbound alone is hard. Events alone are unpredictable. But together, outbound has context and the event has intent.</p>
+            <p><strong>Best parts:</strong></p>
+            <ul>
+              <li>Nobody cares yet.</li>
+              <li>Cold outbound by itself is hard.</li>
+              <li>Outbound finally has a reason to exist.</li>
+              <li>Compress 6 months of outreach into one afternoon.</li>
+              <li>Outbound is the multiplier.</li>
+            </ul>
+            <p><a class="btn" href="https://www.youtube.com/watch?v=iQdNmHKNYlc">Watch the full video</a></p>
+            <p>-Akshat</p>
+          </div>
+        </article>
+        <div>
+          <h3>Subject Options</h3>
+          <ol>
+            <li>🎟️ Your booth is not enough</li>
+            <li>☕ Your buyers are already in the room</li>
+            <li>🧭 Book meetings before the booth</li>
+            <li>🎪 Stop treating conferences like field trips</li>
+            <li>🧲 Cold outbound needs an event trigger</li>
+          </ol>
+          <p><strong>No-emoji fallback:</strong> Your booth is not enough</p>
+          <h3>SendFox Safety Preview</h3>
+          <table>
+            <tr><th>Campaign title</th><td>Conference Demand - Your booth is not enough</td></tr>
+            <tr><th>Subject</th><td>🎟️ Your booth is not enough</td></tr>
+            <tr><th>Preview text</th><td>Most companies treat conferences like expensive networking trips. The real move starts before the event.</td></tr>
+            <tr><th>scheduled_at</th><td>OMITTED</td></tr>
+            <tr><th>Send endpoint</th><td>FORBIDDEN</td></tr>
+            <tr><th>Campaign ID</th><td>2830202</td></tr>
+            <tr><th>Target list</th><td>BizAmps's U.S Interested leads, ID 631826</td></tr>
+          </table>
+        </div>
+      </div>
+    </details>
+
+    <details open>
+      <summary>2. HubSpot Email <span class="pill">reference</span></summary>
+      <article class="email hubspot">
+        <div class="email-head"><strong>Subject:</strong> 🎟️ Your booth is not enough</div>
+        <div class="email-body">
+          <p>Most companies treat conferences like expensive networking trips.</p>
+          <p><strong>Buy booth.<br>Print banners.<br>Fly the team out.<br>Hope pipeline appears.</strong></p>
+          <p>That is not a strategy.</p>
+          <a class="thumb" href="https://www.youtube.com/watch?v=iQdNmHKNYlc"><img src="https://img.youtube.com/vi/iQdNmHKNYlc/maxresdefault.jpg" alt="Watch the full video"></a>
+          <p><a class="btn" href="https://www.youtube.com/watch?v=iQdNmHKNYlc">Watch the full video</a></p>
+          <div class="takeaway"><strong>Key takeaway:</strong> Cold outbound is not always the engine. It is the multiplier.</div>
+        </div>
+      </article>
+    </details>
+
+    <details id="linkedin" open>
+      <summary>3. LinkedIn Post Angles <span class="pill">5 angles</span></summary>
+      <div class="grid">
+        <section>
+          <h3>Punchy/Funny</h3>
+          <div class="copybar"><button onclick="copyById('li-punchy-full')">Copy full</button></div>
+          <div id="li-punchy-full" class="copy">Most companies do conferences like this:
+
+Buy booth.
+Print banners.
+Fly the team out.
+Stand there with polite smiles.
+
+Then hope pipeline appears.
+
+This is not a strategy.
+
+It is an expensive team outing with event badges.
+
+Meanwhile, the exact buyers they want walk a few feet away, grab coffee, say "interesting", and disappear forever.
+
+The better move is pre-event outbound.
+
+Reach out before the event.
+Book meetings before the event.
+Give buyers a reason to notice you before they walk past your booth.
+
+Cold outbound alone is hard.
+Events alone are unpredictable.
+
+Together, outbound has context and the event has intent.
+
+Watch the full video.</div>
+          <h4>Short under 900 characters</h4>
+          <div id="li-punchy-short" class="copy">Most companies do conferences like this:
+
+Buy booth.
+Print banners.
+Fly the team out.
+Hope pipeline appears.
+
+That is not a strategy.
+
+It is an expensive team outing with event badges.
+
+The better move is pre-event outbound:
+
+Reach out before the event.
+Book meetings before the event.
+Give buyers a reason to notice you before they walk past your booth.
+
+Cold outbound alone is hard.
+Events alone are unpredictable.
+
+Together, outbound has context and the event has intent.
+
+Watch the full video.</div>
+        </section>
+        <section>
+          <h3>Problem-led</h3>
+          <div class="copybar"><button onclick="copyById('li-problem-full')">Copy full</button></div>
+          <div id="li-problem-full" class="copy">Your buyer can need your product and still ignore you.
+
+Not because the product is useless.
+
+Because there is no inherent demand.
+
+Normal people translation:
+
+Nobody cares yet.
+
+That is why cold outbound feels so brutal for many B2B teams.
+
+Conferences help because attention is already concentrated.
+
+For two days, the people you want are in one building.
+
+But the conference alone will not save you.
+
+If you wait until the event day, you are competing with booths, coffee lines, badge scans, tote bags, and everyone's tired feet.
+
+The move is to warm the room before you enter it.
+
+Watch the full video.</div>
+          <h4>Short under 900 characters</h4>
+          <div id="li-problem-short" class="copy">Your buyer can need your product and still ignore you.
+
+Because in most B2B categories, there is no inherent demand.
+
+Normal people translation:
+
+Nobody cares yet.
+
+That is why cold outbound alone feels so brutal.
+
+Conferences help because attention is already concentrated.
+
+But waiting until event day is too late.
+
+The better move:
+
+Warm the room before you enter it.
+
+Use pre-event outbound to book meetings, create context, and make buyers notice you before they walk past your booth.
+
+Watch the full video.</div>
+        </section>
+        <section>
+          <h3>Tactical</h3>
+          <div class="copybar"><button onclick="copyById('li-tactical-full')">Copy full</button></div>
+          <div id="li-tactical-full" class="copy">If you are sponsoring or attending a B2B conference, do not start outreach on event day.
+
+Start before the event.
+
+Three moves:
+
+1. Build a named account list of buyers who are likely to attend.
+2. Reach out with a conference-specific reason, not a generic "quick call?" message.
+3. Book short meetings before everyone lands at the venue.
+
+Now the event is not a cold start.
+
+People already know who you are.
+They know why you are relevant.
+They have a reason to stop.
+
+Cold outbound alone is hard.
+Events alone are unpredictable.
+
+Together, outbound becomes the multiplier.
+
+Watch the full video.</div>
+          <h4>Short under 900 characters</h4>
+          <div id="li-tactical-short" class="copy">If you are attending a B2B conference, do not start outreach on event day.
+
+Start before the event.
+
+Three moves:
+
+1. Build a named account list.
+2. Reach out with a conference-specific reason.
+3. Book short meetings before everyone lands.
+
+Now the event is not a cold start.
+
+Buyers already know who you are.
+They know why you are relevant.
+They have a reason to stop.
+
+Cold outbound alone is hard.
+Events alone are unpredictable.
+
+Together, outbound becomes the multiplier.
+
+Watch the full video.</div>
+        </section>
+        <section>
+          <h3>Contrarian</h3>
+          <div class="copybar"><button onclick="copyById('li-contrarian-full')">Copy full</button></div>
+          <div id="li-contrarian-full" class="copy">Cold outbound is not always the engine.
+
+Sometimes it is the multiplier.
+
+That distinction matters.
+
+If there is no demand, no trust, no timing, and no context, outbound has to do too much work.
+
+It has to create attention, explain the problem, build credibility, and ask for time.
+
+But attach outbound to something buyers already care about and the job changes.
+
+Conferences.
+Partnerships.
+Reports.
+Webinars.
+
+Now outbound is not shouting into a quiet room.
+
+The event creates intent.
+Outbound creates the meeting.
+
+Watch the full video.</div>
+          <h4>Short under 900 characters</h4>
+          <div id="li-contrarian-short" class="copy">Cold outbound is not always the engine.
+
+Sometimes it is the multiplier.
+
+If there is no demand, trust, timing, or context, one email has to do too much work.
+
+But attach outbound to something buyers already care about:
+
+Conferences.
+Partnerships.
+Reports.
+Webinars.
+
+Now outbound has a reason to exist.
+
+The event creates intent.
+Outbound creates the meeting.
+
+That is why pre-event outbound beats waiting at the booth.
+
+Watch the full video.</div>
+        </section>
+        <section>
+          <h3>Founder Lesson</h3>
+          <div class="copybar"><button onclick="copyById('li-founder-full')">Copy full</button></div>
+          <div id="li-founder-full" class="copy">One hard founder lesson:
+
+Useful does not automatically mean wanted.
+
+Most B2B products are useful.
+
+That is not enough.
+
+Buyers are busy, skeptical, and already buried under claims from vendors who all sound painfully similar.
+
+So the job is not just:
+
+"Send more emails."
+
+The job is:
+
+Manufacture enough attention and trust that buyers start conversations themselves.
+
+Conferences are one way to do that.
+
+Not because booths are magic.
+
+Because your buyers are already paying attention to the category, the event, and the problems around it.
+
+Watch the full video.</div>
+          <h4>Short under 900 characters</h4>
+          <div id="li-founder-short" class="copy">One hard founder lesson:
+
+Useful does not automatically mean wanted.
+
+Most B2B products are useful.
+
+That is not enough.
+
+Buyers are busy, skeptical, and buried under vendor claims.
+
+So the job is not just "send more emails."
+
+The job is to manufacture enough attention and trust that buyers start conversations themselves.
+
+Conferences help because buyers are already paying attention.
+
+Pre-event outbound turns that attention into meetings.
+
+Watch the full video.</div>
+        </section>
+      </div>
+    </details>
+
+    <details id="whatsapp" open>
+      <summary>4. WhatsApp Variants <span class="pill">personal messages</span></summary>
+      <div class="copybar"><button onclick="copyWhatsAppAll()">Copy all WhatsApp variants</button></div>
+      <div class="three">
+        <section><h3>Punchy/Funny 1</h3><button onclick="copyById('wa1')">Copy</button><div id="wa1" class="copy">Hi [Community Name],
+
+My observation from working around B2B growth:
+
+A lot of companies treat conferences like expensive networking trips.
+
+Buy booth.
+Print banners.
+Fly the team out.
+Hope pipeline appears.
+
+That is not a strategy. That is a calendar invite with invoices.
+
+The better move is to create attention before the event, not after your buyer has already walked past your booth.
+
+In this video, I explain why pre-event outbound makes conferences work harder.
+
+Watch it for the mindset shift, not just tactics.
+
+Video Link:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div></section>
+        <section><h3>Punchy/Funny 2</h3><button onclick="copyById('wa2')">Copy</button><div id="wa2" class="copy">Hi [Community Name],
+
+My observation:
+
+Some teams go to conferences and come back with 17 badge scans, 3 tote bags, and one "good conversation" that never becomes pipeline.
+
+The problem is not the event.
+
+The problem is entering the event cold.
+
+If buyers do not know you before they see the booth, you are relying on luck, caffeine, and foot traffic.
+
+In this video, I explain how to use outbound before the conference so the event has context.
+
+Watch it for the distribution lesson, not just event tactics.
+
+Video Link:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div></section>
+        <section><h3>Punchy/Funny 3</h3><button onclick="copyById('wa3')">Copy</button><div id="wa3" class="copy">Hi [Community Name],
+
+My observation from B2B conferences:
+
+For two days, your buyers are trapped in one building.
+
+Over-caffeinated.
+Slightly underfed.
+Oddly open to vendor conversations.
+
+And most companies still wait at the booth hoping the right person magically appears.
+
+In this video, I explain how pre-event outbound turns that attention into meetings.
+
+Watch it for the distribution principle, not just the conference trick.
+
+Video Link:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div></section>
+        <section><h3>Personal 1</h3><button onclick="copyById('wa4')">Copy</button><div id="wa4" class="copy">Hi [Community Name],
+
+My observation from working with B2B companies:
+
+Your product can be useful. Your buyer can need it. And still, they may ignore it.
+
+Because most categories do not have inherent demand.
+
+Normal language: nobody cares yet.
+
+So you need to attach your outreach to places where attention already exists.
+
+In this video, I explain how to combine outbound with conferences before the event starts.
+
+Watch it for the demand creation angle, not just outreach tactics.
+
+Video Link:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div></section>
+        <section><h3>Personal 2</h3><button onclick="copyById('wa5')">Copy</button><div id="wa5" class="copy">Hi [Community Name],
+
+My observation:
+
+Cold outbound struggles when it has no context.
+
+One message has to create attention, explain the problem, build trust, and ask for time.
+
+That is too much pressure for one email.
+
+But when the buyer is already attending a conference, your message has a reason to exist.
+
+In this video, I explain why outbound works better when it is attached to an attention channel.
+
+Watch it for the strategy, not just templates.
+
+Video Link:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div></section>
+        <section><h3>Personal 3</h3><button onclick="copyById('wa6')">Copy</button><div id="wa6" class="copy">Hi [Community Name],
+
+My observation from event-led growth:
+
+Most companies try to win attention inside the venue.
+
+The smarter play is to warm the room before you enter it.
+
+Reach out before the conference.
+Book meetings before the conference.
+Give buyers a reason to recognize you before they walk past.
+
+In this video, I explain how pre-event outbound turns a conference into a meeting engine.
+
+Watch it for the planning principle, not just event hacks.
+
+Video Link:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div></section>
+        <section><h3>Tactical 1</h3><button onclick="copyById('wa7')">Copy</button><div id="wa7" class="copy">Hi [Community Name],
+
+My observation:
+
+If you are attending a conference, do not wait for event day to start selling.
+
+Three things to do before the event:
+
+1. Build a list of target buyers who may attend.
+2. Reach out with a conference-specific reason.
+3. Book short meetings before everyone lands.
+
+Now the booth is not doing all the work.
+
+In this video, I explain how this changes conference ROI.
+
+Watch it for the operating system, not just one message template.
+
+Video Link:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div></section>
+        <section><h3>Tactical 2</h3><button onclick="copyById('wa8')">Copy</button><div id="wa8" class="copy">Hi [Community Name],
+
+My observation from B2B event plays:
+
+A conference should not be treated like one big intro call.
+
+It should become a rapid discovery sequence.
+
+The prep matters:
+
+1. Identify target accounts.
+2. Create a reason to meet.
+3. Follow up before attention disappears.
+
+In this video, I explain how outbound becomes the multiplier for conferences.
+
+Watch it for the system, not just the checklist.
+
+Video Link:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div></section>
+        <section><h3>Warm Peer Group</h3><button onclick="copyById('wa9')">Copy</button><div id="wa9" class="copy">Hi [Community Name],
+
+I made this after seeing the same conference mistake again and again.
+
+Teams spend real money on booths, travel, and banners.
+
+Then they leave the pipeline outcome to chance.
+
+My take: if you are already spending on the event, pre-event outbound is not optional. It is how you stop wasting the room.
+
+In this video, I break down the idea in simple terms.
+
+Watch it for the business logic, not just conference advice.
+
+Video Link:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div></section>
+        <section><h3>Founder Community</h3><button onclick="copyById('wa10')">Copy</button><div id="wa10" class="copy">Hi [Community Name],
+
+My observation for founders and marketing teams:
+
+Most B2B companies do not lose because the product is useless.
+
+They lose because the market never pays enough attention.
+
+Conferences can help, but only if you do the work before the event.
+
+Pre-event outbound gives buyers a reason to notice you when they are already in the right room.
+
+In this video, I explain how conferences, partnerships, and outbound combine into a demand engine.
+
+Watch it for the distribution lesson, not just event tactics.
+
+Video Link:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div></section>
+      </div>
+    </details>
+
+    <details id="xfb">
+      <summary>5. X/Facebook Copy <span class="pill">local copy</span></summary>
+      <div class="copy">Most companies treat conferences like expensive networking trips.
+
+Buy booth.
+Print banners.
+Fly the team out.
+Hope pipeline appears.
+
+The better move is pre-event outbound.
+
+The event creates intent.
+Outbound creates the meeting.
+
+Watch the full video:
+https://www.youtube.com/watch?v=iQdNmHKNYlc</div>
+    </details>
+
+    <details id="posting" open>
+      <summary>6. Posting Plan <span class="pill">IST</span></summary>
+      <ul>
+        <li><strong>LinkedIn:</strong> Post on Wednesday, 27 May 2026 at 6:30 PM IST. Backup: Thursday, 28 May 2026 at 8:30 PM IST. Avoid late Friday night and Sunday morning.</li>
+        <li><strong>SendFox:</strong> Send on Thursday, 28 May 2026 at 5:00 PM IST. Backup: Friday, 29 May 2026 at 7:30 PM IST. Avoid Monday morning and Saturday.</li>
+        <li><strong>WhatsApp:</strong> Post on Friday, 29 May 2026 at 11:30 AM IST. Backup: Monday, 1 June 2026 at 5:30 PM IST. Avoid late night and the same hour as email.</li>
+        <li><strong>X/Facebook:</strong> Post on Friday, 29 May 2026 at 6:00 PM IST. Backup: Monday, 1 June 2026 at 12:30 PM IST. Lower priority.</li>
+      </ul>
+    </details>
+
+    <details id="coverage" open>
+      <summary>7. Distribution Coverage Check <span class="pill">status</span></summary>
+      <h3>Completed</h3>
+      <ul>
+        <li>Clean HTML review dashboard created.</li>
+        <li>SendFox email preview prepared.</li>
+        <li>SendFox campaign draft created: ID 2830202.</li>
+        <li>LinkedIn angles created.</li>
+        <li>WhatsApp variants created.</li>
+        <li>X/Facebook copy created locally.</li>
+        <li>Posting plan created.</li>
+      </ul>
+      <h3>Drafted</h3>
+      <ul>
+        <li>SendFox draft: created in SendFox.</li>
+      </ul>
+      <h3>Not Yet Done</h3>
+      <ul>
+        <li>Buffer LinkedIn draft.</li>
+        <li>HubSpot API draft.</li>
+        <li>Medium, YouTube Community, Shorts.</li>
+      </ul>
+    </details>
+  </main>
+
+  <div id="copyStatus" class="copy-status" role="status" aria-live="polite"></div>
+  <textarea id="copyHelper" class="copy-helper" aria-hidden="true"></textarea>
+
+  <script>
+    let copyStatusTimer;
+
+    function showCopyStatus(message) {
+      const status = document.getElementById('copyStatus');
+      if (!status) return;
+      status.textContent = message;
+      status.classList.add('show');
+      clearTimeout(copyStatusTimer);
+      copyStatusTimer = setTimeout(() => status.classList.remove('show'), 2200);
+    }
+
+    async function copyText(text) {
+      const value = (text || '').trim();
+      if (!value) {
+        showCopyStatus('Nothing to copy.');
+        return false;
+      }
+
+      if (navigator.clipboard && window.isSecureContext) {
+        try {
+          await navigator.clipboard.writeText(value);
+          showCopyStatus('Copied.');
+          return true;
+        } catch (err) {
+          // Fall through to the textarea-based copy path for file:// pages.
+        }
+      }
+
+      const helper = document.getElementById('copyHelper');
+      if (helper) {
+        helper.value = value;
+        helper.removeAttribute('readonly');
+        helper.focus();
+        helper.select();
+        helper.setSelectionRange(0, value.length);
+        try {
+          const copied = document.execCommand('copy');
+          helper.blur();
+          if (copied) {
+            showCopyStatus('Copied.');
+            return true;
+          }
+        } catch (err) {
+          helper.blur();
+        }
+      }
+
+      window.prompt('Copy this text:', value);
+      showCopyStatus('Copy fallback opened.');
+      return false;
+    }
+
+    function copyById(id) {
+      const node = document.getElementById(id);
+      if (!node) {
+        showCopyStatus('Copy target not found.');
+        return;
+      }
+      copyText(node.innerText || node.textContent || '');
+    }
+
+    function copyWhatsAppAll() {
+      const ids = ['wa1','wa2','wa3','wa4','wa5','wa6','wa7','wa8','wa9','wa10'];
+      const text = ids.map((id, index) => {
+        const node = document.getElementById(id);
+        return `${index + 1}.\n\n${node ? (node.innerText || node.textContent || '').trim() : ''}`;
+      }).join('\n\n---\n\n');
+      copyText(text);
+    }
+  </script>
+</body>
+</html>

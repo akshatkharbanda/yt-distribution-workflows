@@ -1,0 +1,31 @@
+﻿{
+    "created_at":  "2026-05-27T16:39:54",
+    "endpoint":  "POST /campaigns",
+    "campaign_id":  2830202,
+    "campaign_title":  "Conference Demand - Your booth is not enough",
+    "subject":  "🎟️ Your booth is not enough",
+    "preview_text":  "Most companies treat conferences like expensive networking trips. The real move starts before the event.",
+    "selected_list_id":  631826,
+    "selected_list_name":  "BizAmps\u0027s U.S Interested leads",
+    "scheduled_at":  "OMITTED",
+    "send_endpoint_called":  false,
+    "response_fields":  [
+                            "user_id",
+                            "title",
+                            "subject",
+                            "preview_text",
+                            "html",
+                            "from_name",
+                            "from_email",
+                            "scheduled_at",
+                            "timezone",
+                            "slugged_subject",
+                            "updated_at",
+                            "created_at",
+                            "id",
+                            "subject_tester_results",
+                            "preview_text_auto",
+                            "user"
+                        ],
+    "link":  null
+}

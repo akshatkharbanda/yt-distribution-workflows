@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SendFox Final Safety Preview</title>
+  <style>
+    body { margin:0; background:#f5f5f2; color:#171717; font-family:Arial, Helvetica, sans-serif; line-height:1.55; }
+    .wrap { max-width:920px; margin:0 auto; padding:32px 18px 70px; }
+    h1 { margin:0 0 8px; font-size:34px; line-height:1.1; letter-spacing:0; }
+    h2 { margin:26px 0 10px; font-size:22px; letter-spacing:0; }
+    p { margin:0 0 14px 0; }
+    .pill { display:inline-block; padding:4px 9px; border-radius:999px; background:#fff2b8; border:1px solid #e7cf66; font-size:12px; font-weight:700; text-transform:uppercase; }
+    .card { background:#fff; border:1px solid #deded8; border-radius:8px; padding:18px; margin:16px 0; }
+    .grid { display:grid; grid-template-columns:190px 1fr; gap:8px 14px; }
+    .label { color:#666; font-weight:700; }
+    .danger { background:#fdeaea; border-color:#efb7b7; }
+    .email-frame { max-width:640px; background:#fff; border:1px solid #deded8; border-radius:8px; overflow:hidden; }
+    @media (max-width:680px) { .grid { grid-template-columns:1fr; } h1 { font-size:28px; } }
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <span class="pill">SendFox Draft Safety</span>
+    <h1>SendFox Final Safety Preview</h1>
+
+    <section class="card">
+      <h2>Campaign Setup</h2>
+      <div class="grid">
+        <div class="label">Campaign title</div><div>Conference Demand - Your booth is not enough</div>
+        <div class="label">Subject</div><div>🎟️ Your booth is not enough</div>
+        <div class="label">Fallback subject</div><div>Your booth is not enough</div>
+        <div class="label">Preview text</div><div>Most companies treat conferences like expensive networking trips. The real move starts before the event.</div>
+        <div class="label">Preferred From name</div><div>🧠 Akshat from BizAmps</div>
+        <div class="label">Target list</div><div>BizAmps's U.S Interested leads, ID 631826</div>
+        <div class="label">Created campaign ID</div><div>2830202</div>
+      </div>
+    </section>
+
+    <section class="card danger">
+      <h2>SendFox Safety Rules</h2>
+      <div class="grid">
+        <div class="label">scheduled_at</div><div>OMITTED</div>
+        <div class="label">Send endpoint</div><div>FORBIDDEN</div>
+        <div class="label">Current state</div><div>Draft exists. Do not edit, send, or schedule without Akshat approval.</div>
+      </div>
+    </section>
+
+    <section class="card">
+      <h2>Email-Safe HTML Preview</h2>
+      <div class="email-frame">
+        <table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="width:100%; background:#ffffff; margin:0; padding:0;">
+          <tr>
+            <td style="background:#111111; color:#ffffff; padding:14px 20px; font-size:14px; line-height:1.4;">
+              <strong>Subject:</strong> 🎟️ Your booth is not enough
+            </td>
+          </tr>
+          <tr>
+            <td style="padding:24px 22px 26px 22px;">
+              <p style="margin:0 0 14px 0; font-size:16px; line-height:1.55;">Hi {{contact.first_name}},</p>
+              <p style="margin:0 0 14px 0; font-size:24px; line-height:1.18; font-weight:bold;">Most companies treat conferences like expensive networking trips.</p>
+              <p style="margin:0 0 6px 0; font-size:18px; line-height:1.45; font-weight:bold;">Buy booth.</p>
+              <p style="margin:0 0 6px 0; font-size:18px; line-height:1.45; font-weight:bold;">Print banners.</p>
+              <p style="margin:0 0 6px 0; font-size:18px; line-height:1.45; font-weight:bold;">Fly the team out.</p>
+              <p style="margin:0 0 18px 0; font-size:18px; line-height:1.45; font-weight:bold;">Hope pipeline appears.</p>
+              <p style="margin:0 0 14px 0; font-size:16px; line-height:1.55;"><strong>That is not a strategy.</strong></p>
+              <p style="margin:0 0 20px 0; font-size:16px; line-height:1.55;">Meanwhile, ideal buyers walk a few feet away from them and disappear forever.</p>
+              <p style="margin:22px 0 22px 0;"><img src="https://img.youtube.com/vi/iQdNmHKNYlc/maxresdefault.jpg" alt="Watch the full video" style="display:block; width:100%; height:auto; border:0; border-radius:8px;"></p>
+              <p style="margin:0 0 14px 0; font-size:16px; line-height:1.55;">Reach out before the conference.</p>
+              <p style="margin:0 0 14px 0; font-size:16px; line-height:1.55;">Book meetings before the conference.</p>
+              <p style="margin:0 0 18px 0; font-size:16px; line-height:1.55;">Give buyers a reason to notice you before they walk past your booth.</p>
+              <p style="margin:0 0 18px 0; font-size:16px; line-height:1.55;"><strong>But together, outbound has context and the event has intent.</strong></p>
+              <p style="margin:22px 0 18px 0;"><a href="https://www.youtube.com/watch?v=iQdNmHKNYlc" style="display:inline-block; background:#111111; color:#ffffff; padding:10px 16px; border-radius:6px; font-weight:bold; text-decoration:none; font-size:14px; line-height:1.2;">Watch the full video</a></p>
+              <p style="margin:28px 0 0 0; color:#777777; font-size:12px; line-height:1.45;">No longer want these emails? <a href="{{unsubscribe_url}}" style="color:#555555;">Unsubscribe here</a>.</p>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

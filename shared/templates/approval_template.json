@@ -1,0 +1,14 @@
+{
+  "workflow": "youtube-distribution-draft-system",
+  "version": "v1-local-review",
+  "video_folder": "",
+  "created_at": "",
+  "external_draft_creation_enabled": false,
+  "allowed_statuses": ["pending", "approved", "needs_edit", "rejected"],
+  "items": [],
+  "draft_results": {
+    "external_drafts_created": false,
+    "results_file": "draft_results.json",
+    "notes": "V1 local review only. Do not create external drafts."
+  }
+}
